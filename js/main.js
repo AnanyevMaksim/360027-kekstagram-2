@@ -97,4 +97,5 @@ const createPhoto = () => {
 
 const photos = Array.from({length: PHOTO_COUNT}, createPhoto);
 
+// eslint-disable-next-line no-console
 console.log(photos);
