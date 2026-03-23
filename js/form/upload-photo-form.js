@@ -1,5 +1,7 @@
 import {isEscapeKey} from '../utils.js';
 import {validateForm, resetValidation, setupValidation} from './validate.js';
+import {initScale} from './scale.js';
+import {initEffects} from './effects.js';
 
 const formElement = document.querySelector('.img-upload__form');
 const overlayElement = formElement.querySelector('.img-upload__overlay');
@@ -38,7 +40,7 @@ const onFileInputChange = () => {
 };
 
 const openUploadFormSubmit = (evt) => {
-  evt.preventDafault();
+  evt.preventDefault();
   const isValid = validateForm();
 
   // eslint-disable-next-line no-console
@@ -49,6 +51,8 @@ const initUploadForm = () => {
   fileInputElement.addEventListener('change', onFileInputChange);
   formElement.addEventListener('submit', openUploadFormSubmit);
   setupValidation();
+  initScale();
+  initEffects();
 };
 
 export {initUploadForm};
