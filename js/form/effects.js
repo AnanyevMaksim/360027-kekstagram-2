@@ -96,4 +96,8 @@ const initEffects = () => {
   effectsFieldsetElement.addEventListener('change', onEffectChange);
 };
 
-export {initEffects};
+const resetEffects = () => {
+  applyEffect('none');
+};
+
+export {initEffects, resetEffects};
