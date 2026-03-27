@@ -72,7 +72,7 @@ const applyEffect = (effectName) => {
 };
 
 const onSliderUpdate = () => {
-  const value = sliderElement.noUiSlider.get();
+  const value = parseFloat(sliderElement.noUiSlider.get());
   const checkedEffect = effectsFieldsetElement.querySelector('.effects__radio:checked');
   const effectName = checkedEffect.value;
   const effect = EFFECTS[effectName];
