@@ -13,6 +13,20 @@ const hashtagsInputElement = formElement.querySelector('.text__hashtags');
 const commentInputElement = formElement.querySelector('.text__description');
 const submitButtonElement = formElement.querySelector('.img-upload__submit');
 
+const loadPreviewImage = () => {
+  const file = fileInputElement.files[0];
+  const previewImageElement = overlayElement.querySelector('.img-upload__preview img');
+  const effectsPreviewElements = overlayElement.querySelectorAll('.effects__preview');
+
+  if (file) {
+    const objectUrl = URL.createObjectURL(file);
+    previewImageElement.src = objectUrl;
+    effectsPreviewElements.forEach((preview) => {
+      preview.style.backgroundImage = `url(${objectUrl})`;
+    });
+  }
+};
+
 const closeUploadForm = () => {
   overlayElement.classList.add('hidden');
   document.body.classList.remove('modal-open');
@@ -45,6 +59,7 @@ const onFileInputChange = () => {
   document.body.classList.add('modal-open');
   cancelButtonElement.addEventListener('click', onCancelButtonClick);
   document.addEventListener('keydown', onDocumentKeydown);
+  loadPreviewImage();
 };
 
 const blockSubmitButton = () => {
